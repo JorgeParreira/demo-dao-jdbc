@@ -32,10 +32,21 @@ public class Main {
         }
 
         System.out.println("\n=== TEST 4: seller insert ===");
-        Seller newSeller = new Seller(null, "Greg", "greg@mail.com", new Date(), 4000.0, department);
+        Seller newSeller = new Seller(null, "Susana", "susana@mail.com", new Date(), 4000.0, department);
         sellerDao.insert(newSeller);
         System.out.println("Inserted new seller: " + newSeller.getName() + " with id = " + newSeller.getId());
 
+        System.out.println("\n=== TEST 5: seller update ===");
+        seller = sellerDao.findById(11);
+        seller.setName("Jorge");
+        seller.setEmail("jorge@mail.com");
+        sellerDao.update(seller);
+        System.out.println("Update completed!");
+
+        System.out.println("\n=== TEST : seller delete ===");
+        seller = sellerDao.findById(12);
+        sellerDao.deleteById(seller.getId());
+        System.out.println("Deleted!");
 
     }
 }
